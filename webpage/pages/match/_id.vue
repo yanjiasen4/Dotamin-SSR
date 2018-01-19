@@ -177,7 +177,7 @@ export default {
 <style scoped>
 .match-wrapper {
   margin: 0 20px;
-  padding: 30px 2%;
+  padding: 30px 1%;
 }
 
 .match-result {
