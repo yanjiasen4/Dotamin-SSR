@@ -58,7 +58,12 @@
     </mu-row>
 
     <mu-row gutter>
-      <!-- <highcharts :options="options"></highcharts> -->
+      <mu-col desktop="50">
+        <highcharts :options="radiantOptions"></highcharts>
+      </mu-col>
+      <mu-col desktop="50">
+        <highcharts :options="direOptions"></highcharts>
+      </mu-col>
     </mu-row>
   </div>
 </template>
@@ -82,13 +87,30 @@ export default {
       heroes: Heroes.heroes,
       items: Items.items,
       disable: false,
-      options: chartsOptions.options
+      radiantOptions: {},
+      direOptions: {}
     }
   },
   props: ['id'],
   async asyncData ({ params }) {
     let { data } = await axios.get(`https://api.opendota.com/api/matches/${params.id}`)
-    return { match: data }
+    let rPlayers = data.players.slice(0, 5)
+    let dPlayers = data.players.slice(5, 10)
+    let rOptions = chartsOptions.create()
+    let dOptions = chartsOptions.create()
+    rOptions.title.text = '天辉团队输出比'
+    dOptions.title.text = '夜魇团队输出比'
+    for (let player of rPlayers) {
+      rOptions.series[0].data.push([
+        player.personaname, player.hero_damage
+      ])
+    }
+    for (let player of dPlayers) {
+      dOptions.series[0].data.push([
+        player.personaname, player.hero_damage
+      ])
+    }
+    return { match: data, radiantOptions: rOptions,  direOptions: dOptions }
   },
   methods: {
   },

@@ -38,7 +38,16 @@
           </mu-row>
         </mu-td>
         <mu-td>{{ player.level }}</mu-td>
-        <mu-td>{{ player.kills }}</mu-td>
+        <mu-td class="tb-no-bottom-padding">
+          <mu-row class="tb-float">
+            {{ player.kills }}
+          </mu-row>
+          <mu-row class="tb-bar">
+            <mu-col width="33" class="kill" :style="{ width: (100 * player.kills / (player.kills + player.deaths + player.assists)) + '%' }"></mu-col>
+            <mu-col width="33" class="dead" :style="{ width: (100 * player.deaths / (player.kills + player.deaths + player.assists)) + '%' }"></mu-col>
+            <mu-col width="33" class="assist" :style="{ width: (100 * player.assists / (player.kills + player.deaths + player.assists)) + '%' }"></mu-col>
+          </mu-row>
+        </mu-td>
         <mu-td>{{ player.deaths }}</mu-td>
         <mu-td>{{ player.assists }}</mu-td>
         <mu-td>{{ player.gold_per_min }}</mu-td>
@@ -168,6 +177,32 @@ export default {
 
 .tb-stat {
   width: 60px;
+}
+
+.tb-float {
+  padding-top: 11px;
+}
+
+.tb-bar {
+  min-width: 160px;
+  position: relative;
+  bottom: -11px;
+  height: 10%;
+}
+
+.kill {
+  height: 100%;
+  background-color: green;
+}
+
+.dead {
+  height: 100%;
+  background-color: red;
+}
+
+.assist {
+  height: 100%;
+  background-color: #FFCC00;
 }
 
 .tb-item {

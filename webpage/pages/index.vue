@@ -2,9 +2,7 @@
   <section class="container">
     <div>
       <app-logo/>
-      <h1 class="title">
-        dota2stat-ssr
-      </h1>
+      <h1 class="title">dota2stat-ssr</h1>
       <h2 class="subtitle">
         Nuxt.js project
       </h2>

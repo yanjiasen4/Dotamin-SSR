@@ -1032,7 +1032,7 @@ export default {
       'url_small_portrait': 'http://cdn.dota2.com/apps/dota2/images/heroes/pangolier_sb.png',
       'url_large_portrait': 'http://cdn.dota2.com/apps/dota2/images/heroes/pangolier_lg.png',
       'url_vertical_portrait': 'http://cdn.dota2.com/apps/dota2/images/heroes/pangolier_vert.jpg',
-      'id': 119
+      'id': 120
     }
     ]
   }
